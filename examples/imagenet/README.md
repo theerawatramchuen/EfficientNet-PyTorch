@@ -23,16 +23,7 @@ python main.py data -e -a 'resnet50' --pretrained --gpu 0
 ```
 
 
-# ImageNet training in PyTorch
-
-This implements training of popular model architectures, such as ResNet, AlexNet, and VGG on the ImageNet dataset.
-
-## Requirements
-
-- Install PyTorch ([pytorch.org](http://pytorch.org))
-- `pip install -r requirements.txt`
-- Download the ImageNet dataset from http://www.image-net.org/
-  - Then, move and extract the training and validation images to labeled subfolders, using [the following shell script](extract_ILSVRC.sh)
+# training in PyTorch
 
 ## Training
 
