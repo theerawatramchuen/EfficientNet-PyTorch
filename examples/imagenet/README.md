@@ -21,7 +21,10 @@ python main.py data -e -a 'efficientnet-b3' --pretrained --gpu 0 --batch-size 12
 # Evaluate ResNet-50 for comparison
 python main.py data -e -a 'resnet50' --pretrained --gpu 0
 ```
-
+```bash
+# Sample training
+python main.py data -a 'efficientnet-b3' --pretrained --gpu 0 --batch-size 16 --epoch 500
+```
 ## Usage
 
 ```bash
