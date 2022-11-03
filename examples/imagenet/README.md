@@ -22,55 +22,6 @@ python main.py data -e -a 'efficientnet-b3' --pretrained --gpu 0 --batch-size 12
 python main.py data -e -a 'resnet50' --pretrained --gpu 0
 ```
 
-
-# training in PyTorch
-
-## Training
-
-To train a model, run `main.py` with the desired model architecture and the path to the ImageNet dataset:
-
-```bash
-python main.py -a resnet18 [imagenet-folder with train and val folders]
-```
-
-The default learning rate schedule starts at 0.1 and decays by a factor of 10 every 30 epochs. This is appropriate for ResNet and models with batch normalization, but too high for AlexNet and VGG. Use 0.01 as the initial learning rate for AlexNet or VGG:
-
-```bash
-python main.py -a alexnet --lr 0.01 [imagenet-folder with train and val folders]
-```
-
-## Use Dummy Data
-
-ImageNet dataset is large and time-consuming to download. To get started quickly, run `main.py` using dummy data by "--dummy". It's also useful for training speed benchmark. Note that the loss or accuracy is useless in this case.
-
-```bash
-python main.py -a resnet18 --dummy
-```
-
-## Multi-processing Distributed Data Parallel Training
-
-You should always use the NCCL backend for multi-processing distributed training since it currently provides the best distributed training performance.
-
-### Single node, multiple GPUs:
-
-```bash
-python main.py -a resnet50 --dist-url 'tcp://127.0.0.1:FREEPORT' --dist-backend 'nccl' --multiprocessing-distributed --world-size 1 --rank 0 [imagenet-folder with train and val folders]
-```
-
-### Multiple nodes:
-
-Node 0:
-
-```bash
-python main.py -a resnet50 --dist-url 'tcp://IP_OF_NODE0:FREEPORT' --dist-backend 'nccl' --multiprocessing-distributed --world-size 2 --rank 0 [imagenet-folder with train and val folders]
-```
-
-Node 1:
-
-```bash
-python main.py -a resnet50 --dist-url 'tcp://IP_OF_NODE0:FREEPORT' --dist-backend 'nccl' --multiprocessing-distributed --world-size 2 --rank 1 [imagenet-folder with train and val folders]
-```
-
 ## Usage
 
 ```bash
